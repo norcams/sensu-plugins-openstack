@@ -26,7 +26,7 @@ def main():
     parser.add_argument('-S', '--service-type', default='compute')
     parser.add_argument('-r', '--region', default=None)
     parser.add_argument('-d', '--domain', default=None)
-    parser.add_argument('-c', '--ca_cert', default=True)
+    parser.add_argument('-C', '--ca_cert', default=True)
     parser.add_argument('-H', '--host')
     parser.add_argument('-s', '--scheme', default=DEFAULT_SCHEME)
     args = parser.parse_args()

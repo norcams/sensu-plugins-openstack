@@ -43,7 +43,7 @@ def main():
     parser.add_argument('-S', '--service-type', default='compute')
     parser.add_argument('-r', '--region', default=None)
     parser.add_argument('-d', '--domain', default=None)
-    parser.add_argument('-c', '--ca_cert', default=True)
+    parser.add_argument('-C', '--ca_cert', default=True)
     parser.add_argument('-H', '--host')
     parser.add_argument('-s', '--scheme', default=DEFAULT_SCHEME)
     args = parser.parse_args()
@@ -60,13 +60,15 @@ def main():
 
     if args.host:
         hypervisors = client.hypervisors.search(args.host)
+        if len(hypervisors) > 0:
+            hypervisors[0] = client.hypervisors.get(hypervisors[0].id)
     else:
         hypervisors = client.hypervisors.list()
 
     for hv in hypervisors:
         for key, value in hv.to_dict().iteritems():
             if key in METRIC_KEYS:
-                output_metric('{}.{}.{}'.format(args.scheme, hv.hypervisor_hostname, key), value)
+                output_metric('{}.{}.{}'.format(args.scheme, hv.hypervisor_hostname.split('.')[0], key), value)
 
     if not args.host:
         for key, value in client.hypervisor_stats.statistics().to_dict().iteritems():
