@@ -1,6 +1,6 @@
 ## Sensu-Plugins-openstack
 
-[![Build Status](https://travis-ci.org/sensu-plugins/sensu-plugins-openstack.svg?branch=master)](https://travis-ci.org/sensu-plugins/sensu-plugins-openstack)
+[![Build Status](https://travis-ci.org/norcams/sensu-plugins-openstack.svg?branch=master)](https://travis-ci.org/norcams/sensu-plugins-openstack)
 
 ## Functionality
 
